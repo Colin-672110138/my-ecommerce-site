@@ -1,11 +1,10 @@
-const express = require('express');
-const router = express.Router();
+var http = require('http');
 
-const subject =require('../data/contact_subject.json');
-router.get('/', (req, res) => {
-    //req.end('{"contactSubject": ["General Enquiry","Class","Schedule","instructor","Price","Other","sss"]}');
-    res.json(subject);
+http.createServer(function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST')
+    res.setHeader('Access-Control-Allow-Headers', 'Contect-Type')
 
-});
-
-module.exports = router;
+  res.writeHead(200, {'Content-Type': 'application/json'});
+  res.end('{"contactSubject" : ["General Enquery", "Classes", "Schedules", "Instructer", "Prices", "Other", "Anut"]}');
+}).listen(5500);
